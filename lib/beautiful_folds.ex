@@ -15,4 +15,7 @@ defmodule BeautifulFolds do
   def hello do
     :world
   end
+
+  1..1000_000 |> Enum.reduce(Sum.mempty(), fn(x, acc) -> Sum.concat(acc, Sum.of(x)) end)
+
 end

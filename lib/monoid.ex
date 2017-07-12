@@ -20,7 +20,7 @@ defmodule Sum do
   def of(x), do: %__MODULE__{x: x}
 
   defdelegate concat(a, b), to: Monoid, as: :concat
-  def mempty, do: Monoid.empty(__MODULE__)
+  def mempty(), do: Monoid.mempty(%__MODULE__{})
 end
 
 # const All = x =>
@@ -57,7 +57,7 @@ defimpl Monoid, for: Sum do
     Sum.of(x + y)
   end
 
-  def mempty(%Sum{}) do
+  def mempty(_) do
     Sum.of(0)
   end
 end
